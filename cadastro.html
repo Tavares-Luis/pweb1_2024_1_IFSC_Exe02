@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    <title>Ficha Cadastral:</title>
+  </head>
+  <body>
+    <div class="container">
+    <h2>Ficha de Cadastro</h2>
+    <form action="limparDados">
+      <table>
+        <tr>
+          <td>Nome:</td>
+          <td colspan="3"><input type="text" size="55"></td> 
+        </tr>
+        <tr>
+          <td>RG:</td>
+          <td><input type="text" id="rg" size="13" maxlength="12"></td>
+          <td><label for="cpf">C.P.F.:</label></td>
+          <td><input type="text" id="cpf" size="13" maxlength="14"></td>
+        </tr>
+        <tr>
+          <td>Endereço:</td>
+          <td colspan="3"><input type="text" size="55"></td>
+        </tr>
+        <tr>
+          <td style="vertical-align: top;">Sexo:</td>
+          <td>
+            <select style="width: 70%;">
+              <option value="masculino">Masculino</option>
+              <option value="feminino">Feminino</option>
+            </select>
+          </td>
+          <td style="vertical-align: top;">Data Nascimento:</td>
+          <td><input type="date" style="width: 100%;"></td>
+        </tr>
+    
+        <tr>
+          <td>Situação Civil:</td>
+          <td colspan="3">
+            <label><input type="radio" name="situacao_civil" value="solteiro"> Solteiro(a)</label>
+            <label><input type="radio" name="situacao_civil" value="casado"> Casado(a)</label>
+            <label><input type="radio" name="situacao_civil" value="viuvo"> Viúvo(a)</label>
+          </td>
+        </tr>
+        <tr>
+          <td colspan="4" style="text-align: center;"><input type="reset" value="Limpar Dados"></td>
+        </tr>
+      </table>
+    </form>
+    </div>
+    
+    <script>
+    document.getElementById('cpf').addEventListener('input', function (e) {
+      var cpf = e.target.value.replace(/\D/g, '');
+      cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+      cpf = cpf.replace(/(\d{3})(\d)/, '$1.$2');
+      cpf = cpf.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      e.target.value = cpf;
+    });
+    
+    document.getElementById('rg').addEventListener('input', function (e) {
+      var rg = e.target.value.replace(/\D/g, '');
+      rg = rg.replace(/(\d{2})(\d)/, '$1.$2');
+      rg = rg.replace(/(\d{3})(\d)/, '$1.$2');
+      rg = rg.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+      e.target.value = rg;
+    });
+    </script>
+  </body>
+
+<style>
+h2 {
+  font-family: Arial;
+  text-align: center;
+}
+.container {
+  border: 7px solid; 
+  padding: 0 20px 10px 10px;
+  display: inline-block; 
+
+}
+table {
+  width: 500px;
+  border-collapse: collapse;
+  border-spacing: 1px;
+}
+td {
+  padding: 3px;
+}
+input[type="text"], select {
+  width: 100%; 
+  size: 55;
+}
+input[type="button"] {
+  width: auto;
+}
+
+label[for="cpf"], label[for="rg"] {
+  margin-left: 35px;
+  margin-right: 35px;
+}
+
+
+input[type="radio"] {
+  display: inline-block;
+  margin-right: 10px; 
+}
+
+
+select {
+  width: 45%; 
+}
+
+
+input[type="date"] {
+  width: 50%; 
+}
+</style>
+</html>
